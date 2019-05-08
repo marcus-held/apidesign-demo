@@ -8,7 +8,8 @@ class EconomyView(val resourceConversionService: ResourceConversionService) {
 
 	@ShellMethod(key = ["listPrices"], value = "Lists current prices of resources")
 	fun listPrices() {
-		resourceConversionService.getAll().forEach { (resource, price) -> println("$resource -> $price") }
+		resourceConversionService.getAll()
+				.forEach { (resource, price) -> println("${resource.name} -> $price") }
 	}
 
 }

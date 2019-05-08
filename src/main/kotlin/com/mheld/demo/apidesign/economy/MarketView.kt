@@ -8,13 +8,18 @@ import org.springframework.shell.standard.ShellMethod
 class MarketView(val marketService: MarketService, val playerRepository: PlayerRepository) {
 
 	@ShellMethod(key = ["sell"], value = "Sells the specified resource")
-	fun sell(resource: String, amount: Int) {
-		marketService.sell(playerRepository.getCurrent(), Resource(resource), amount)
+	fun sell(amount: Int, resource: String) {
+		val player = playerRepository.getCurrent()
+		marketService.sell(player, Resource(resource), amount)
+		println("Sold $amount $resource. You have ${player.money} money now")
 	}
 
 	@ShellMethod(key = ["buy"], value = "Buys the specified resource")
-	fun buy(resource: String, amount: Int) {
-		marketService.buy(playerRepository.getCurrent(), Resource(resource), amount)
+	fun buy(amount: Int, resource: String) {
+		val player = playerRepository.getCurrent()
+		marketService.buy(player, Resource(resource), amount)
+		println("Bought $amount $resource. You have ${player.money} money now")
+
 	}
 
 }

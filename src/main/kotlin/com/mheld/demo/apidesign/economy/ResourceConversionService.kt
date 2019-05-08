@@ -7,9 +7,9 @@ import java.lang.IllegalArgumentException
 class ResourceConversionService {
 
 	private val conversions: Map<Resource, Int> = mapOf(
-			Resource("Comics") to 3,
-			Resource("VideoGames") to 50,
-			Resource("Dolls") to 15
+			Resource("comic") to 3,
+			Resource("videogame") to 50,
+			Resource("doll") to 15
 	)
 
 	fun getAll() = conversions.toMap()
