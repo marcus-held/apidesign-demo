@@ -4,12 +4,12 @@ import org.springframework.shell.standard.ShellComponent
 import org.springframework.shell.standard.ShellMethod
 
 @ShellComponent
-class EconomyView(private val resourceConversionService: ResourceConversionService) {
+class EconomyView(private val resourceService: ResourceService) {
 
 	@ShellMethod(key = ["listPrices"], value = "Lists current prices of resources")
 	fun listPrices() {
-		resourceConversionService.getAll()
-				.forEach { (resource, price) -> println("${resource.name} -> $price") }
+		resourceService.getAll()
+				.forEach { resource -> println("${resource.name} -> ${resource.price}") }
 	}
 
 }

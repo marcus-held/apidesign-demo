@@ -4,18 +4,12 @@ import org.springframework.shell.standard.ShellComponent
 import org.springframework.shell.standard.ShellMethod
 
 @ShellComponent
-class PlayerView(private val playerRepository: PlayerRepository, private val playerFactory: PlayerFactory) {
-
-	@ShellMethod(value = "Creates a new Player.", key = ["new"])
-	fun newPlayer(name: String) {
-		playerRepository.save(playerFactory.createNewPlayer(name))
-		println("Created a new player $name")
-	}
+class PlayerView(private val playerService: PlayerService) {
 
 	@ShellMethod(value = "Get information about the current player", key = ["info"])
-	fun info() = println(playerRepository.getCurrent() ?: "You didn't create a player yet")
+	fun info() = println(playerService.player)
 
 	@ShellMethod(value = "Lists the inventory of the player", key = ["inventory", "inv"])
-	fun inventory() = playerRepository.getCurrent().inventory.getAll()
-			.forEach { (resource, amount) -> println("${resource.name} : $amount") }
+	fun inventory() = playerService.getAllResources()
+			.forEach { (resource , amount)-> println("$resource : $amount") }
 }

@@ -1,8 +1,7 @@
 package com.mheld.demo.apidesign.player.model
 
-data class Player(val name: String,
-				  val inventory: Inventory,
-				  private var _money: Int) {
+internal data class Player(private var _money: Int,
+				  val inventory: Inventory = Inventory()) {
 
 	var money: Int
 		get() = _money

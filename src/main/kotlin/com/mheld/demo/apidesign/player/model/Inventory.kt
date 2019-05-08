@@ -1,14 +1,14 @@
 package com.mheld.demo.apidesign.player.model
 
-import com.mheld.demo.apidesign.economy.Resource
+import com.mheld.demo.apidesign.economy.ResourceId
 
-data class Inventory(private val store : MutableMap<Resource, Int>) {
+internal data class Inventory(private val store : MutableMap<ResourceId, Int> = mutableMapOf()) {
 
 	fun getAll() = store.toMap()
 
-	fun add(resource: Resource, amount: Int) = store.put(resource, (store[resource] ?: 0) + amount)
+	fun add(resource: ResourceId, amount: Int) = store.put(resource, (store[resource] ?: 0) + amount)
 
-	fun remove(resource: Resource, amount: Int) {
+	fun remove(resource: ResourceId, amount: Int) {
 		val amountInStore = store[resource] ?: 0
 		val newAmountInStore = amountInStore - amount
 		when {
