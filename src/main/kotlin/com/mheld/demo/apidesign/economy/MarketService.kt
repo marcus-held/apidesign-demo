@@ -4,7 +4,7 @@ import com.mheld.demo.apidesign.player.model.Player
 import org.springframework.stereotype.Service
 
 @Service
-class MarketService(val resourceConversionService: ResourceConversionService) {
+class MarketService(private val resourceConversionService: ResourceConversionService) {
 
 	fun buy(player: Player, resource: Resource, amount: Int) {
 		val price = resourceConversionService.getPriceFor(resource)

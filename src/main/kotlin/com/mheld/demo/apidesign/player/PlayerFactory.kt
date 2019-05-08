@@ -6,7 +6,7 @@ import com.mheld.demo.apidesign.player.model.Player
 import org.springframework.stereotype.Service
 
 @Service
-class PlayerFactory(val resourceRepository: ResourceRepository) {
+class PlayerFactory(private val resourceRepository: ResourceRepository) {
 
 	fun createNewPlayer(name : String) :Player {
 		val inventory = Inventory(mutableMapOf())

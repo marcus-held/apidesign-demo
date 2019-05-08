@@ -4,7 +4,7 @@ import org.springframework.shell.standard.ShellComponent
 import org.springframework.shell.standard.ShellMethod
 
 @ShellComponent
-class PlayerView(val playerRepository: PlayerRepository, val playerFactory: PlayerFactory) {
+class PlayerView(private val playerRepository: PlayerRepository, private val playerFactory: PlayerFactory) {
 
 	@ShellMethod(value = "Creates a new Player.", key = ["new"])
 	fun newPlayer(name: String) {
